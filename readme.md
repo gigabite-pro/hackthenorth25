@@ -9,7 +9,7 @@ Finance is boring for most students — but TikTok brainrot? That’s sticky.
 
 - Every **stock = a financial topic** (e.g., credit scores, budgeting, ETFs).  
 - To **buy a stock**, you spend coins, watch a brainrot-style explainer video, and answer a short quiz.  
-- When you finish, the stock price rises for everyone.  
+- When you finish, the stock price drops for everyone.  
 - Daily streaks, leaderboards, and battlepass-style unlocks keep students coming back.  
 
 StockUp transforms money skills into a game — so learning finance feels like playing the market.  
