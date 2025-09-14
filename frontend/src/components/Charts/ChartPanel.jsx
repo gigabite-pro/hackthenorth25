@@ -2,13 +2,7 @@ import { useRef, useState, useEffect, useMemo } from "react";
 import { buildPath } from "../../utils/chartHelpers";
 import GuideLines from "./GuideLines";
 
-export default function ChartPanel({ id, title, series, chipLabel, up = false }) {
-    const lastDelta = useMemo(() => {
-        if (series.length < 2) return 0;
-        const a = series[series.length - 2].y;
-        const b = series[series.length - 1].y;
-        return b - a;
-    }, [series]);
+export default function ChartPanel({ id, title, series, chipLabel, up = false, onClick }) {
 
     const ref = useRef(null);
     const [size, setSize] = useState({ w: 900, h: 300 });
@@ -30,7 +24,7 @@ export default function ChartPanel({ id, title, series, chipLabel, up = false })
     const { path, minY, maxY } = useMemo(() => buildPath(series, size.w, size.h), [series, size]);
 
     return (
-        <div className="chart-wrap">
+        <div className="chart-wrap" onClick={onClick} style={{ cursor: onClick ? 'pointer' : 'default' }}>
             <div className="chart-head">
                 <div className="chart-title">{title}</div>
                 <div className={`chip ${up ? "up" : "down"}`}>{chipLabel}</div>

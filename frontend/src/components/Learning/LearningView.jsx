@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { getQuestionBank } from "../../utils/questionBank";
 
-export default function LearningView({ module, onBack }) {
+export default function LearningView({ module, onBack, onQuizComplete }) {
     const [bank, setBank] = useState([]);
     const [loading, setLoading] = useState(true);
     const [idx, setIdx] = useState(0);
     const [choice, setChoice] = useState(null);
     const [submitted, setSubmitted] = useState(false);
     const [attempts, setAttempts] = useState(0);
+    const [correctAnswers, setCorrectAnswers] = useState(0);
+    const [wrongAnswers, setWrongAnswers] = useState(0);
 
     // Load questions asynchronously
     useEffect(() => {
@@ -31,6 +33,12 @@ export default function LearningView({ module, onBack }) {
         setSubmitted(false);
         setAttempts(0);
     }, [idx, module.key]);
+
+    useEffect(() => {
+        // Reset counters when module changes
+        setCorrectAnswers(0);
+        setWrongAnswers(0);
+    }, [module.key]);
 
     // Handle loading and empty states
     if (loading) {
@@ -109,16 +117,16 @@ export default function LearningView({ module, onBack }) {
 
                         {submitted && !correct && (
                             <div className="result no">
-                                ❌ Not quite.
+                                ❌ Wrong answer! -10 points deducted.
                                 <div className="explain">
-                                    Hint: {q.hints?.[Math.max(0, Math.min(attempts - 1, (q.hints?.length || 1) - 1))] || "Re-read the prompt and eliminate obviously wrong options."}
+                                    {q.why || q.explain || "The correct answer was: " + q.choices[q.correct]}
                                 </div>
                             </div>
                         )}
 
                         {submitted && correct && (
                             <div className="result ok">
-                                ✅ Correct!
+                                ✅ Correct! +10 points earned.
                                 <div className="explain">{q.why || q.explain || "Nice work — that's the key idea."}</div>
                             </div>
                         )}
@@ -128,15 +136,24 @@ export default function LearningView({ module, onBack }) {
                                 className="primary-btn"
                                 onClick={() => {
                                     if (!submitted) {
-                                        if (choice !== null && choice !== q.correct) setAttempts((a) => a + 1);
                                         setSubmitted(true);
+                                        // Track correct/wrong answers for final scoring
+                                        if (choice === q.correct) {
+                                            setCorrectAnswers(prev => prev + 1);
+                                        } else {
+                                            setWrongAnswers(prev => prev + 1);
+                                        }
                                     } else if (idx < bank.length - 1) {
                                         setIdx((i) => Math.min(i + 1, bank.length - 1));
                                         setSubmitted(false);
                                         setChoice(null);
                                         setAttempts(0);
                                     } else {
-                                        // Done button pressed - go back to home page
+                                        // Done button pressed - calculate final score and complete quiz
+                                        const finalScore = correctAnswers * 10 - wrongAnswers * 10;
+                                        if (onQuizComplete) {
+                                            onQuizComplete(finalScore);
+                                        }
                                         onBack();
                                     }
                                 }}

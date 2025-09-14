@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import htnLogo from "../../assets/htn_logo.png";
 
-export default function Header({ theme, setTheme, route, setRoute, xp, xpGoal, user, isAuthenticated }) {
+export default function Header({ theme, setTheme, route, setRoute, xp, xpGoal, user, isAuthenticated, coins }) {
     const { loginWithRedirect, logout } = useAuth0();
     const xpPct = Math.min(100, Math.round((xp / xpGoal) * 100));
 
@@ -8,20 +9,12 @@ export default function Header({ theme, setTheme, route, setRoute, xp, xpGoal, u
         <header className="topbar">
             <div className="brand">
                 {route.view === "learn" && (
-                    <button 
-                        className="back-btn" 
-                        onClick={() => setRoute({ view: "dashboard", moduleKey: null })} 
-                        aria-label="Back to dashboard"
-                    >
+                    <button className="back-btn" onClick={() => setRoute({ view: "dashboard", moduleKey: null })} aria-label="Back to dashboard">
                         ←
                     </button>
                 )}
-                <span className="logo" aria-hidden>
-                    🪙
-                </span>
-                <span className="title">
-                    {user ? "Hi " + user.name + "" : "Crocodilo Financilo"}
-                </span>
+                <img src={htnLogo} alt="HTN Logo" className="logo" />
+                <span className="title">{user ? "Hi " + user.name + "" : "Crocodillo Financillo"}</span>
                 <div>
                     {isAuthenticated && (
                         <button className="login" onClick={() => logout()}>
@@ -38,7 +31,7 @@ export default function Header({ theme, setTheme, route, setRoute, xp, xpGoal, u
 
             <div className="xp">
                 <div className="xp-label" aria-live="polite">
-                    XP {xp}/{xpGoal}
+                    XP {xp}/{xpGoal} • 🪙 {coins || 0}
                 </div>
                 <div className="xp-bar" aria-label="Experience progress">
                     <div className="xp-fill" style={{ width: `${xpPct}%` }} />
@@ -54,10 +47,13 @@ export default function Header({ theme, setTheme, route, setRoute, xp, xpGoal, u
                 >
                     <span>{theme === "dark" ? "🌞" : "🌙"}</span>
                 </button>
-                <button className="icon-btn" aria-label="Leaderboard">
+                <button className="icon-btn" aria-label="Leaderboard" onClick={() => setRoute({ view: "leaderboard", moduleKey: null })}>
                     <span>🏆</span>
                 </button>
-                <button className="icon-btn" aria-label="Profile">
+                <button className="icon-btn" aria-label="Redeem Coins" onClick={() => setRoute({ view: "redeem", moduleKey: null })}>
+                    <span>🎁</span>
+                </button>
+                <button className="icon-btn" aria-label="Profile" onClick={() => setRoute({ view: "profile", moduleKey: null })}>
                     <span>👤</span>
                 </button>
             </div>

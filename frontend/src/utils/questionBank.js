@@ -8,21 +8,21 @@ const groq = new Groq({
 export async function getQuestionBank(key) {
     // Define topics and prompts for each module
     const moduleConfig = {
-        rbc: {
-            topic: "Index Funds and Investment Basics",
-            context: "RBC InvestEase platform focusing on index funds, expense ratios, diversification, and basic investment principles"
+        budgeting: {
+            topic: "The Art of Budgeting",
+            context: "Personal budgeting strategies, expense tracking, saving goals, emergency funds, and money management techniques"
         },
-        cohere: {
-            topic: "AI and Language Models",
-            context: "Cohere AI coaching platform focusing on prompts, tokens, AI model usage, and natural language processing"
+        credit: {
+            topic: "The Credit Score Game",
+            context: "Credit scores, credit reports, building credit history, credit utilization, payment history, and credit improvement strategies"
         },
-        options: {
-            topic: "Options Trading",
-            context: "Options trading basics including calls, puts, premiums, volatility, and risk management"
+        stocks: {
+            topic: "The Stock Market",
+            context: "Stock market basics, investing principles, market analysis, portfolio diversification, and long-term wealth building"
         }
     };
 
-    const config = moduleConfig[key] || moduleConfig.rbc;
+    const config = moduleConfig[key] || moduleConfig.budgeting;
 
     try {
         const completion = await groq.chat.completions.create({
@@ -54,7 +54,7 @@ Make questions practical and educational. Ensure the correct answer index (0-3) 
                 }
             ],
             model: "llama-3.1-8b-instant",
-            temperature: 2,
+            temperature: 1,
             max_tokens: 1000
         });
 
@@ -76,66 +76,66 @@ Make questions practical and educational. Ensure the correct answer index (0-3) 
 
     // Fallback to static questions if Groq fails
     const base = {
-        rbc: [
+        budgeting: [
             {
-                topic: "Index Funds",
-                prompt: "What is the main benefit of an index fund?",
-                choices: ["Guaranteed outperformance", "Broad market diversification", "Zero fees", "Daily dividends"],
+                topic: "Emergency Fund",
+                prompt: "How much should you ideally save in an emergency fund?",
+                choices: ["1 month of expenses", "3-6 months of expenses", "1 year of expenses", "Only $1,000"],
                 correct: 1,
-                explain: "Index funds track a market index for wide exposure at low cost.",
-                why: "Diversification reduces single-stock risk and usually lowers fees.",
-                hints: ["Think about risk across many companies.", "Which choice mentions spreading bets?"],
+                explain: "Financial experts recommend 3-6 months of living expenses for emergencies.",
+                why: "This amount covers most unexpected situations without being excessive.",
+                hints: ["Think about job loss scenarios.", "Not too little, not too much."],
             },
             {
-                topic: "Fees",
-                prompt: "Lower expense ratios typically mean:",
-                choices: ["Lower returns", "Higher risk", "More of your returns kept", "More active trading"],
+                topic: "50/30/20 Rule",
+                prompt: "In the 50/30/20 budgeting rule, what does the 20% represent?",
+                choices: ["Entertainment", "Housing costs", "Savings and debt repayment", "Food expenses"],
                 correct: 2,
-                explain: "Fees subtract from performance over time.",
-                why: "If costs are lower, more of the gross return stays in your pocket.",
-                hints: ["Fees come out of performance.", "Lower fees = ? of your return remains"],
+                explain: "The 20% goes toward savings and paying off debt.",
+                why: "This ensures you're building wealth and reducing financial obligations.",
+                hints: ["Think about your financial future.", "What helps you get ahead financially?"],
             },
         ],
-        cohere: [
+        credit: [
             {
-                topic: "AI Coaching",
-                prompt: "A good prompt is usually:",
-                choices: ["Vague", "Verbose with no structure", "Clear and specific", "Only emojis"],
+                topic: "Credit Utilization",
+                prompt: "What's the ideal credit utilization ratio for a good credit score?",
+                choices: ["90% or higher", "50-70%", "Under 30%", "Exactly 100%"],
                 correct: 2,
-                explain: "Specific goals and constraints guide the model.",
-                why: "Clarity reduces ambiguity, improving outputs.",
-                hints: ["How do you reduce ambiguity?", "What makes instructions easier to follow?"],
+                explain: "Keeping credit utilization under 30% shows responsible credit management.",
+                why: "Lower utilization demonstrates you're not maxing out your available credit.",
+                hints: ["Lower is generally better.", "Think about what shows financial responsibility."],
             },
             {
-                topic: "Tokens",
-                prompt: "Tokens are:",
-                choices: ["Entire sentences", "Units of text pieces", "Only numbers", "Only images"],
+                topic: "Payment History",
+                prompt: "What percentage of your credit score is based on payment history?",
+                choices: ["15%", "35%", "30%", "10%"],
                 correct: 1,
-                explain: "Models process inputs in token units.",
-                why: "Understanding tokens helps estimate context limits.",
-                hints: ["Smaller than a word sometimes.", "Models read text in chunks called …?"],
+                explain: "Payment history is the most important factor, making up 35% of your score.",
+                why: "Consistently paying on time shows lenders you're reliable.",
+                hints: ["It's the biggest factor.", "Think about what lenders care about most."],
             },
         ],
-        options: [
+        stocks: [
             {
-                topic: "Calls",
-                prompt: "A call option gives the holder the right to:",
-                choices: ["Sell at a strike price", "Buy at a strike price", "Receive dividends", "Own the company"],
+                topic: "Diversification",
+                prompt: "What is the main benefit of portfolio diversification?",
+                choices: ["Guaranteed profits", "Reducing overall risk", "Avoiding all losses", "Maximizing short-term gains"],
                 correct: 1,
-                explain: "Calls = right to buy; Puts = right to sell.",
-                why: "Calls benefit if price goes up above strike.",
-                hints: ["Calls and puts are opposites.", "Which one is the right to buy?"],
+                explain: "Diversification spreads risk across different investments.",
+                why: "When some investments decline, others may perform well, balancing your portfolio.",
+                hints: ["Don't put all eggs in one basket.", "Think about risk management."],
             },
             {
-                topic: "Risk",
-                prompt: "Option premiums primarily reflect:",
-                choices: ["Company age", "Volatility", "Dividends", "CEO salary"],
+                topic: "Dollar-Cost Averaging",
+                prompt: "Dollar-cost averaging means:",
+                choices: ["Buying only cheap stocks", "Investing the same amount regularly", "Selling when prices drop", "Only investing large amounts"],
                 correct: 1,
-                explain: "Higher volatility → higher premium.",
-                why: "More uncertainty increases the value of optionality.",
-                hints: ["What makes outcomes less predictable?", "More price swings mean…"],
+                explain: "Dollar-cost averaging involves investing a fixed amount at regular intervals.",
+                why: "This strategy reduces the impact of market volatility over time.",
+                hints: ["Think about consistency.", "Same amount, different intervals."],
             },
         ],
     };
-    return base[key] || base.rbc;
+    return base[key] || base.budgeting;
 }

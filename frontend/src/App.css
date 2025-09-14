@@ -4,11 +4,17 @@ body {
 }
 
 .login {
-    border: none;
-    border-radius: 0.5vw;
-    padding: 0.5vw 2vw;
-    font-size: 1vw;
-    background: #61dafb;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
     color: white;
+    border: 0;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 700;
     cursor: pointer;
+    font-size: 14px;
+    transition: opacity 0.2s ease;
+}
+
+.login:hover {
+    opacity: 0.9;
 }

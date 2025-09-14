@@ -106,9 +106,141 @@ export default function StyleTag() {
       .result.no { background: rgba(239,68,68,0.12); border: 1px solid #7f1d1d; color: #fecaca; }
       .explain { margin-top: 6px; font-weight: 600; color: var(--muted); }
 
-      .qa-actions { display: flex; gap: 10px; }
+      .qa-actions { display: flex; gap: 10px; margin-top: 16px; }
       .primary-btn { background: linear-gradient(90deg, #16a34a, #22c55e, #86efac); color: #06210f; border: 0; padding: 10px 14px; border-radius: 12px; font-weight: 800; cursor: pointer; }
       .ghost-btn { background: transparent; color: var(--ink); border: 1px solid var(--border); padding: 10px 14px; border-radius: 12px; font-weight: 800; cursor: pointer; }
+
+      /* --- Redeem Page Styles --- */
+      .redeem-header { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+      .redeem-title h1 { margin: 0; font-size: clamp(24px, 4vw, 32px); }
+      .redeem-title p { margin: 8px 0 0 0; color: var(--muted); font-size: clamp(14px, 2vw, 16px); }
+      
+      .redeem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+      
+      .redeem-card { 
+        background: var(--card-bg); 
+        border: 2px solid var(--border); 
+        border-radius: 16px; 
+        padding: 20px; 
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .redeem-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+      
+      .redeem-card-header { display: flex; align-items: center; gap: 12px; }
+      .redeem-emoji { font-size: 24px; }
+      .redeem-brand { font-weight: 700; font-size: 18px; color: var(--ink); }
+      
+      .redeem-card-body { flex: 1; }
+      .redeem-offer { margin: 0 0 8px 0; font-size: 16px; font-weight: 600; color: var(--ink); }
+      .redeem-description { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.4; }
+      
+      .redeem-card-footer { display: flex; justify-content: space-between; align-items: center; }
+      .redeem-cost { display: flex; flex-direction: column; gap: 2px; }
+      .cost-label { font-size: 12px; color: var(--muted); text-transform: uppercase; font-weight: 600; }
+      .cost-value { font-size: 16px; font-weight: 700; color: #f59e0b; }
+      
+      .redeem-btn { 
+        background: linear-gradient(90deg, #3b82f6, #1d4ed8); 
+        color: white; 
+        border: 0; 
+        padding: 10px 16px; 
+        border-radius: 8px; 
+        font-weight: 700; 
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+      }
+      .redeem-btn:hover { opacity: 0.9; }
+      .redeem-btn.disabled { 
+        background: var(--muted); 
+        cursor: not-allowed; 
+        opacity: 0.5; 
+      }
+
+      /* --- Profile Page Styles --- */
+      .profile-header { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+      .profile-title h1 { margin: 0; font-size: clamp(24px, 4vw, 32px); }
+      .profile-title p { margin: 8px 0 0 0; color: var(--muted); font-size: clamp(14px, 2vw, 16px); }
+      
+      .profile-content { display: flex; flex-direction: column; gap: 24px; }
+      
+      .profile-card { 
+        background: var(--card-bg); 
+        border: 2px solid var(--border); 
+        border-radius: 16px; 
+        padding: 24px; 
+      }
+      .profile-card h3 { margin: 0 0 16px 0; font-size: 18px; color: var(--ink); }
+      
+      .profile-card-header { display: flex; align-items: center; gap: 20px; }
+      .profile-avatar { width: 80px; height: 80px; border-radius: 50%; overflow: hidden; background: var(--border); display: flex; align-items: center; justify-content: center; }
+      .avatar-img { width: 100%; height: 100%; object-fit: cover; }
+      .avatar-placeholder { font-size: 32px; color: var(--muted); }
+      
+      .profile-info h2 { margin: 0 0 8px 0; font-size: 24px; color: var(--ink); }
+      .profile-email { margin: 4px 0; color: var(--muted); font-size: 16px; }
+      .profile-joined { margin: 4px 0 0 0; color: var(--muted); font-size: 14px; }
+      
+      .profile-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+      .stat-card { 
+        background: var(--card-bg); 
+        border: 2px solid var(--border); 
+        border-radius: 12px; 
+        padding: 20px; 
+        display: flex; 
+        align-items: center; 
+        gap: 16px; 
+      }
+      .stat-icon { font-size: 24px; }
+      .stat-value { font-size: 24px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+      .stat-label { font-size: 14px; color: var(--muted); text-transform: uppercase; font-weight: 600; }
+      
+      .level-info { display: flex; flex-direction: column; gap: 16px; }
+      .level-badge { 
+        display: inline-block; 
+        padding: 8px 16px; 
+        border-radius: 20px; 
+        color: white; 
+        font-weight: 700; 
+        font-size: 14px; 
+        text-transform: uppercase; 
+        width: fit-content; 
+      }
+      .level-progress p { margin: 8px 0; color: var(--ink); }
+      .progress-bar { 
+        width: 100%; 
+        height: 8px; 
+        background: var(--border); 
+        border-radius: 4px; 
+        overflow: hidden; 
+      }
+      .progress-fill { height: 100%; transition: width 0.3s ease; }
+      .progress-text { font-size: 14px; color: var(--muted); }
+      
+      .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+      .achievement-item { 
+        display: flex; 
+        align-items: center; 
+        gap: 12px; 
+        padding: 16px; 
+        background: rgba(34,197,94,0.1); 
+        border: 1px solid rgba(34,197,94,0.3); 
+        border-radius: 12px; 
+      }
+      .achievement-icon { font-size: 24px; }
+      .achievement-name { font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+      .achievement-desc { font-size: 14px; color: var(--muted); }
+      .no-achievements { color: var(--muted); text-align: center; padding: 20px; font-style: italic; }
+
+      /* --- Logo Styles --- */
+      .logo { 
+        width: 32px; 
+        height: 32px; 
+        object-fit: contain; 
+        border-radius: 4px; 
+      }
 
       /* --- Responsive tile grid: auto-fit across the full width --- */
       .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--tile-min), 1fr)); gap: clamp(10px, 2vw, 16px); }
