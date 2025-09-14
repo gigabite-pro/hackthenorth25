@@ -1,35 +1,44 @@
-Are you bad at financing because you're brainrotted?
-Introducing Crocodillo Financinno, the Brainrot educational application for students to gain financial literacy.
-## Inspiration
-We were inspired by our lack of financial knowledge. 
+# Crocodillo Financillo: The Brainrot Educational Application for Financial Literacy
 
-## What it does
-Mango is a gamified app that makes learning about money fun.
-You "invest" in educational modules that look like stocks. Every time you play, an AI generates a unique, Duolingo-style lesson with different mini-games, so you're always learning in a new way.
+## Inspiration  
+We were inspired by our own lack of financial knowledge — and the realization that most students are thrown into the world of budgeting, credit, and investments with little guidance. We also wanted to lean into the humor and energy of “brainrot culture” to make something students would actually want to use, not just another boring finance app.  
 
-## How we built it
-Windsurf - For coding
-Cohere - Creation of questions and simulations
-MongoDB - Storing user profile data and course/module transcripts 
-Auth0 - User accounts
-Graphite - PR tracking/engineering practices
+## What it does  
+**Crocodillo Financillo** is a gamified financial literacy app that turns money management into a playful, addictive experience. Instead of traditional modules, students "invest" in courses that are represented as stocks.  
 
-'## Challenges we ran into
-Pivoting ideas - Having to pivot our original hardware idea to a new path needed us to be quick on our feet.
+- **AI-Generated Lessons**: Each session, an AI creates a fresh set of Duolingo-style exercises, quizzes, and mini-games.  
+- **Gamified Investments**: As you complete lessons, you earn points that mimic stock “growth.” You’re literally investing in your own knowledge.  
+- **Unique Learning Paths**: No two lessons are the same — one day you’re simulating a grocery budget, the next you’re managing an investment portfolio.  
+- **Student-Friendly UX**: A colorful, brainrot-inspired design language with humor and memes to make finance approachable.  
 
-## Accomplishments that we're proud of
-Getting an MVP done in 12 hours!
-Having more than 10 financial modules implemented!
-Working sleek frontend!
-AI generated Duolingo style questionnaires, panels, and simulation questions.
-Ability to learn while "investing" stocks with our gamified 
-Auth0 enables seamless secure authorization to personal accounts and sensitive data.
+## How we built it  
+- **Windsurf** – for frontend and backend coding.  
+- **Cohere** – generating dynamic questions, scenarios, and personalized simulations.  
+- **MongoDB** – storing user progress, financial “portfolios,” and lesson transcripts.  
+- **Auth0** – secure authentication and management of user accounts.  
+- **Graphite** – PR tracking and enforcing engineering best practices.  
 
-## What we learned
-We learned the importance of pivoting at the right time. 
-We learned that teams function much better when everyone is on the same page.
+## Challenges we ran into  
+- **Pivoting Ideas**: Originally, we planned a hardware-based concept, but quickly shifted into software when we saw the opportunity to build something students would actually use.  
+- **AI Integration**: Designing lesson content that was both fun and accurate proved challenging. We had to balance memes with meaningful learning outcomes.  
+- **Time Constraints**: Building a polished MVP in 12 hours while syncing frontend, backend, and AI systems was a sprint.  
 
-## What's next for Crocodillo Financinno
-Implement more training modules 
+## Accomplishments that we're proud of  
+- Delivering a functional MVP in under 12 hours.  
+- Designing and deploying more than **10 unique financial literacy modules.**  
+- Building a **sleek, intuitive frontend** that students can pick up immediately.  
+- Creating **AI-generated Duolingo-style lessons** with quizzes, scenario-based questions, and meme-inspired interfaces.  
+- Implementing a **secure Auth0-based login** for users to safely track their progress.  
 
+## What we learned  
+- **The power of pivoting**: Sometimes the best product comes from letting go of your first idea.  
+- **Team collaboration**: We discovered how much smoother the process is when everyone is aligned on priorities.  
+- **EdTech needs humor**: Making finance engaging requires breaking away from traditional “serious” formats.  
 
+## What’s next for Crocodillo Financillo  
+- **More Training Modules**: Expanding to cover taxes, credit scores, student loans, and long-term investing.  
+- **Leaderboard & Social Features**: Adding competition with classmates and friends to boost engagement.  
+- **Rewards & Discounts**: Partnering with local businesses or online platforms to let users redeem points for real-world perks.  
+- **Mobile Expansion**: Launching on iOS and Android with push notifications and streak tracking.  
+- **Accessibility Improvements**: Ensuring inclusive design for all learning styles and backgrounds.  
+- **Deeper Personalization**: Leveraging AI to create learning paths based on financial goals (e.g., saving for travel vs. managing student loans).  
